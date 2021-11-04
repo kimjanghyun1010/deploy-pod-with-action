@@ -1,10 +1,8 @@
 name: CD
 
-# main branch로 병합이 되면 작동합니다
+# master branch로 병합이 되면 작동합니다
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 env:
