@@ -6,7 +6,7 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-print('뉴스기사 스크래핑 시작')
+print('뉴스기사 스크래핑 시작!!!')
 
 req = requests.get('https://www.yna.co.kr/safe/news')
 req.encoding= None
