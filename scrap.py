@@ -6,7 +6,7 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-print('뉴스기사 스크래핑 시작!!!')
+print('Start scrap')
 
 req = requests.get('https://www.yna.co.kr/safe/news')
 req.encoding= None
@@ -26,8 +26,13 @@ for title in datas:
 with open(os.path.join(BASE_DIR, 'scrap.json'), 'w+',encoding='utf-8') as json_file:
     json.dump(data, json_file, ensure_ascii = False, indent='\t')
 
-print('뉴스기사 스크래핑 끝끝끝끝끝끝끝끝')
+print('END scrap')
 
 with open(os.path.join(BASE_DIR, 'scrap.json')) as f:
     list_file = f.read().split()
     print(list_file)
+
+num = 3
+while num < 4:
+  if num == 5:
+    break
