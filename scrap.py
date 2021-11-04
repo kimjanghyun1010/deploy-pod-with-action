@@ -18,7 +18,7 @@ datas = soup.select(
 
 data = {}
 
-for title in datas:   
+for title in datas:
     name = title.find_all('a')[0].text
     url = 'http:'+title.find('a')['href']
     data[name] = url
@@ -27,3 +27,7 @@ with open(os.path.join(BASE_DIR, 'scrap.json'), 'w+',encoding='utf-8') as json_f
     json.dump(data, json_file, ensure_ascii = False, indent='\t')
 
 print('뉴스기사 스크래핑 끝끝끝끝')
+
+with open(os.path.join(BASE_DIR, 'scrap.json')) as f:
+    list_file = f.read().split()
+    print(list_file)
