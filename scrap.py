@@ -31,8 +31,3 @@ print('END scrap')
 with open(os.path.join(BASE_DIR, 'scrap.json')) as f:
     list_file = f.read().split()
     print(list_file)
-
-num = 3
-while num < 4:
-  if num == 5:
-    break
