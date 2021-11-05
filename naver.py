@@ -54,8 +54,7 @@ while idx < news_num:
 
 print('크롤링 완료')
 
-print('데이터프레임 변환')
-
 with open(os.path.join(BASE_DIR, 'naver.json'), 'w+',encoding='utf-8') as json_file:
     json.dump(news_dict, json_file, ensure_ascii = False, indent='\t')
 
+print(news_dict)
