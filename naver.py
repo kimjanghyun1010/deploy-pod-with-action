@@ -15,7 +15,7 @@ date = date.replace(':','시') + '분'
 # query = input('검색 키워드를 입력하세요 : ')
 # news_num = int(input('총 필요한 뉴스기사 수를 입력해주세요(숫자만 입력) : '))
 
-query = "이터널스"
+query = "인터스텔라"
 news_num = int(50)
 query = query.replace(' ', '+')
 
