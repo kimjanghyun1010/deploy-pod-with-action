@@ -52,7 +52,7 @@ while idx < news_num:
     req = requests.get('https://search.naver.com/search.naver' + next_page_url)
     soup = BeautifulSoup(req.text, 'html.parser')
 
-print('크롤링 완료')
+#print('크롤링 완료')
 
 with open(os.path.join(BASE_DIR, 'naver.json'), 'w+',encoding='utf-8') as json_file:
     json.dump(news_dict, json_file, ensure_ascii = False, indent='\t')
