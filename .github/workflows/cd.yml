@@ -61,4 +61,4 @@ jobs:
           git config --global user.email "mskjh6@naver.com"
           git config --global user.name "kimjanghyun1010"
           git commit -am "Update image tag"
-          git push -u origin naver
+          git push -u origin master
