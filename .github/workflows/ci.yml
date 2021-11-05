@@ -25,5 +25,5 @@ jobs:
       run: |
         git config --local user.email mskjh6@naver.com
         git config --local user.name kimjanghyun1010 # 커밋에 포함될 이름
-        git add scrap.json
+        git add naver.json
         git commit -m "Auto - Update data with Scraping" # 커밋 메세지

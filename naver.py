@@ -1,10 +1,13 @@
 import os
 import re
 from datetime import datetime
-
+import sys
 import requests
 from bs4 import BeautifulSoup
 from pandas import DataFrame
+import json
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 date = str(datetime.now())
 date = date[:date.rfind(':')].replace(' ', '_')
@@ -16,12 +19,10 @@ query = "듄"
 news_num = int(50)
 query = query.replace(' ', '+')
 
-
 news_url = 'https://search.naver.com/search.naver?where=news&sm=tab_jum&query={}'
 
 req = requests.get(news_url.format(query))
 soup = BeautifulSoup(req.text, 'html.parser')
-
 
 news_dict = {}
 idx = 0
@@ -54,12 +55,7 @@ while idx < news_num:
 print('크롤링 완료')
 
 print('데이터프레임 변환')
-news_df = DataFrame(news_dict).T
 
-folder_path = os.getcwd()
-xlsx_file_name = '네이버뉴스_{}_{}.xlsx'.format(query, date)
+with open(os.path.join(BASE_DIR, 'naver.json'), 'w+',encoding='utf-8') as json_file:
+    json.dump(news_dict, json_file, ensure_ascii = False, indent='\t')
 
-news_df.to_excel(xlsx_file_name)
-
-print('엑셀 저장 완료 | 경로 : {}\\{}'.format(folder_path, xlsx_file_name))
-#os.startfile(folder_path)
