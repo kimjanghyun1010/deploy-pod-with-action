@@ -57,4 +57,9 @@ print('크롤링 완료')
 with open(os.path.join(BASE_DIR, 'naver.json'), 'w+',encoding='utf-8') as json_file:
     json.dump(news_dict, json_file, ensure_ascii = False, indent='\t')
 
-print(news_dict)
+with open('naver.json') as f:
+    while True:
+        line = f.readline().splitlines()
+        if not line:
+            break
+        print(line[0])
