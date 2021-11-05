@@ -42,7 +42,7 @@ jobs:
         with:
           repository: kimjanghyun1010/argo-kustomize
           ref: master
-          token: ${{ github.token }}
+          token: ${{ secrets.ACTION_TOKEN }}
           path: argo-kustomize
 
       - name: Update Kubernetes resources
@@ -51,12 +51,6 @@ jobs:
           kustomize edit set image ${{ env.IMAGE_NAME }}:${{ steps.image.outputs.version }}
           cat kustomization.yaml
       - name: Commit files
-        uses: actions/checkout@v2
-        with:
-          repository: kimjanghyun1010/argo-kustomize
-          ref: master
-          token: ${{ github.token }}
-          path: argo-kustomize
         run: |
           cd argo-kustomize
           git config --global user.email "mskjh6@naver.com"
