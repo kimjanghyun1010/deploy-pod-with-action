@@ -42,7 +42,7 @@ jobs:
         with:
           repository: kimjanghyun1010/argo-kustomize
           ref: master
-          token: ${{ secrets.ACTION_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: argo-kustomize
 
       - name: Update Kubernetes resources
