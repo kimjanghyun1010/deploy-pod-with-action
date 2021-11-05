@@ -1,10 +1,11 @@
+import json
 import os
 import re
-from datetime import datetime
 import sys
+from datetime import datetime
+
 import requests
 from bs4 import BeautifulSoup
-import json
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
