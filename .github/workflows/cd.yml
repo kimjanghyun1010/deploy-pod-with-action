@@ -27,10 +27,34 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.ACTION_TOKEN }}
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:${{ steps.image.outputs.version }}
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+
+      - name: Checkout kustomize repository
+        uses: actions/checkout@v2
+        with:
+          repository: kimjanghyun1010/argo-kustomize
+          ref: master
+          token: ${{ secrets.ACTION_TOKEN }}
+          path: argo-kustomize
+
+      - name: Update Kubernetes resources
+        run: |
+          cd argo-kustomize/overlays/dev/
+          kustomize edit set image ${{ env.IMAGE_NAME }}:${{ steps.image.outputs.version }}
+          cat kustomization.yaml
+      - name: Commit files
+        run: |
+          cd argo-kustomize
+          git config --global user.email "mskjh6@naver.com"
+          git config --global user.name "kimjanghyun1010"
+          git add .
+          git commit -am "Update image tag"
+          git push -u origin master
