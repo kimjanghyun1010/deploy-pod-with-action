@@ -4,7 +4,6 @@ from datetime import datetime
 import sys
 import requests
 from bs4 import BeautifulSoup
-from pandas import DataFrame
 import json
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
